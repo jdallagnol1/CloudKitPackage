@@ -9,8 +9,16 @@ public struct CloudKitImplementation: CloudKitProtocol {
         print("publicDatabase.className -> \(publicDatabase.className)")
     }
     
-    public func createRecord() {
-        print(#function)
+    @MainActor
+    public func createRecord(teacher: Teacher) async {
+        do {
+            let encodedTeacher = try CloudKitRecordEncoder().encode(teacher)
+            // record is now a CKRecord you can upload to CloudKit
+            try await publicDatabase.save(encodedTeacher)
+        } catch(let error) {
+           // something went wrong
+            print("Error while executing createRecord method: \(error.localizedDescription)")
+        }
     }
     
     public func readRecord() {

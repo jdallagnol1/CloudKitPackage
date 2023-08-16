@@ -11,5 +11,5 @@ public protocol CloudKitProtocol {
     func createRecord()
     func readRecord()
     func updateRecord()
-    func removeRecord()
+    func deleteRecord()
 }

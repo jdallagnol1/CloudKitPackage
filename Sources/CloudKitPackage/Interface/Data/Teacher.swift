@@ -7,15 +7,13 @@
 
 import Foundation
 
-public struct Teacher: Identifiable, Hashable, CustomCloudKitCodable {
+public struct Teacher: CustomCloudKitCodable {
     public var cloudKitSystemFields: Data?
-    public var id: Int
     public var name: String
     public var age: String
     public var active: Bool
 
-    public init(id: Int, name: String, age: String, active: Bool) {
-        self.id = id
+    public init(name: String, age: String, active: Bool) {
         self.name = name
         self.age = age
         self.active = active

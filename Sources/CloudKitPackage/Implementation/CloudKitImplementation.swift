@@ -8,19 +8,19 @@ public struct CloudKitImplementation {
         print("publicDatabase.className -> \(publicDatabase.className)")
     }
     
-    func createRecord() {
+    public func createRecord() {
         print(#function)
     }
     
-    func readRecord() {
+    public func readRecord() {
         print(#function)
     }
     
-    func updateRecord() {
+    public func updateRecord() {
         print(#function)
     }
     
-    func removeRecord() {
+    public func removeRecord() {
         print(#function)
     }
     

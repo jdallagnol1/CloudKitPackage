@@ -3,7 +3,7 @@ import CloudKit
 public struct CloudKitImplementation: CloudKitProtocol {
     
     public private(set) var text = "Hello, World!"
-    private let publicDatabase = CKContainer(identifier: "iCould.br.org.eldorado.monalisa-ck-spike").publicCloudDatabase
+    private let publicDatabase = CKContainer.default().publicCloudDatabase
     
     public init() {
         print("publicDatabase.className -> \(publicDatabase.className)")

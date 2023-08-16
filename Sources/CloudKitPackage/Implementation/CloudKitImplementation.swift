@@ -21,7 +21,7 @@ public struct CloudKitImplementation: CloudKitProtocol {
         print(#function)
     }
     
-    public func removeRecord() {
+    public func deleteRecord() {
         print(#function)
     }
     

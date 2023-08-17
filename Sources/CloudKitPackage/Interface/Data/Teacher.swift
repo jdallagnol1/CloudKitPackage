@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CloudKit
 
 public struct Teacher: CustomCloudKitCodable {
     public var cloudKitSystemFields: Data?

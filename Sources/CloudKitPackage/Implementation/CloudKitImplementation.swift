@@ -32,9 +32,9 @@ public struct CloudKitImplementation: CloudKitProtocol {
             for record in records {
                 let recordResultTuple = try record.1.get()
                 let decodedRecord = try CloudKitRecordDecoder().decode(Teacher.self, from: recordResultTuple)
+                print(decodedRecord.cloudKitIdentifier)
                 teachersList.append(decodedRecord)
             }
-            print(teachersList)
         } catch(let error) {
            // something went wrong
             print("Error while executing readRecord method: \(error.localizedDescription)")
@@ -43,12 +43,22 @@ public struct CloudKitImplementation: CloudKitProtocol {
     
     @MainActor
     public func updateRecord() async {
-        print(#function)
+//        do {
+//
+//        } catch(let error) {
+//            print("Error while executing updateRecord method: \(error.localizedDescription)")
+//
+//        }
     }
     
     @MainActor
     public func deleteRecord() async {
-        print(#function)
+        do {
+            
+        } catch(let error) {
+            print("Error while executing deleteRecord method: \(error.localizedDescription)")
+
+        }
     }
     
 }

@@ -28,12 +28,13 @@ public struct CloudKitImplementation: CloudKitProtocol {
             let query = CKQuery(recordType: "Teacher", predicate: predicate)
             let records = try await publicDatabase.records(matching: query).matchResults
             
-            var result: [Teacher] = []
+            var teachersList: [Teacher] = []
             for record in records {
-                let decodedRecord = try CloudKitRecordDecoder().decode(Teacher.self, from: record.1.get())
-                result.append(decodedRecord)
+                let recordResultTuple = try record.1.get()
+                let decodedRecord = try CloudKitRecordDecoder().decode(Teacher.self, from: recordResultTuple)
+                teachersList.append(decodedRecord)
             }
-            print(result)
+            print(teachersList)
         } catch(let error) {
            // something went wrong
             print("Error while executing readRecord method: \(error.localizedDescription)")

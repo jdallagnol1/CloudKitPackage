@@ -24,12 +24,10 @@ public struct CloudKitImplementation: CloudKitProtocol {
     @MainActor
     public func readRecord() async {
         do {
-            let reference = CKRecord(recordType: "Teacher")
-            let record = try await publicDatabase.record(for: reference.recordID)
-            
-//            let encodedTeachersArray = try await publicDatabase.allRecordZones()
+            let predicate = NSPredicate(value: true)
+            let query = CKQuery(recordType: "Teacher", predicate: predicate)
+            let record = try await publicDatabase.records(matching: query)
             print(record)
-            // record is now a CKRecord you can upload to CloudKit
         } catch(let error) {
            // something went wrong
             print("Error while executing readRecord method: \(error.localizedDescription)")

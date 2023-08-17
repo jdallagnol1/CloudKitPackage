@@ -21,24 +21,27 @@ public struct CloudKitImplementation: CloudKitProtocol {
         }
     }
     
+    /// readRecord() is currently fetching all records of type Teacher
     @MainActor
-    public func readRecord() async {
+    public func readRecord() async -> [Teacher] {
+        var teachersList: [Teacher] = []
         do {
             let predicate = NSPredicate(value: true)
             let query = CKQuery(recordType: "Teacher", predicate: predicate)
             let records = try await publicDatabase.records(matching: query).matchResults
             
-            var teachersList: [Teacher] = []
             for record in records {
                 let recordResultTuple = try record.1.get()
                 let decodedRecord = try CloudKitRecordDecoder().decode(Teacher.self, from: recordResultTuple)
                 print(decodedRecord.cloudKitIdentifier)
                 teachersList.append(decodedRecord)
             }
+            
         } catch(let error) {
            // something went wrong
             print("Error while executing readRecord method: \(error.localizedDescription)")
         }
+        return teachersList
     }
     
     @MainActor
@@ -53,12 +56,12 @@ public struct CloudKitImplementation: CloudKitProtocol {
     
     @MainActor
     public func deleteRecord() async {
-        do {
-            
-        } catch(let error) {
-            print("Error while executing deleteRecord method: \(error.localizedDescription)")
-
-        }
+//        do {
+//
+//        } catch(let error) {
+//            print("Error while executing deleteRecord method: \(error.localizedDescription)")
+//
+//        }
     }
     
 }

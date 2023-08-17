@@ -24,8 +24,11 @@ public struct CloudKitImplementation: CloudKitProtocol {
     @MainActor
     public func readRecord() async {
         do {
-            let encodedTeachersArray = try await publicDatabase.allRecordZones()
-            print(encodedTeachersArray)
+            let reference = CKRecord(recordType: "Teacher")
+            let record = try await publicDatabase.record(for: reference.recordID)
+            
+//            let encodedTeachersArray = try await publicDatabase.allRecordZones()
+            print(record)
             // record is now a CKRecord you can upload to CloudKit
         } catch(let error) {
            // something went wrong

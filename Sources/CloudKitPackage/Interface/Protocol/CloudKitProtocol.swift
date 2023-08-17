@@ -9,7 +9,7 @@ import Foundation
 
 public protocol CloudKitProtocol {
     func createRecord(teacher: Teacher) async
-    func readRecord()
-    func updateRecord()
-    func deleteRecord()
+    func readRecord() async
+    func updateRecord() async
+    func deleteRecord() async
 }

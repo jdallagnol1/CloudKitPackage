@@ -21,15 +21,25 @@ public struct CloudKitImplementation: CloudKitProtocol {
         }
     }
     
-    public func readRecord() {
+    @MainActor
+    public func readRecord() async {
+        do {
+            let encodedTeachersArray = try await publicDatabase.allRecordZones()
+            print(encodedTeachersArray)
+            // record is now a CKRecord you can upload to CloudKit
+        } catch(let error) {
+           // something went wrong
+            print("Error while executing readRecord method: \(error.localizedDescription)")
+        }
+    }
+    
+    @MainActor
+    public func updateRecord() async {
         print(#function)
     }
     
-    public func updateRecord() {
-        print(#function)
-    }
-    
-    public func deleteRecord() {
+    @MainActor
+    public func deleteRecord() async {
         print(#function)
     }
     

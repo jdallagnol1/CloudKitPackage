@@ -55,13 +55,12 @@ public struct CloudKitImplementation: CloudKitProtocol {
     }
     
     @MainActor
-    public func deleteRecord() async {
-//        do {
-//
-//        } catch(let error) {
-//            print("Error while executing deleteRecord method: \(error.localizedDescription)")
-//
-//        }
+    public func deleteRecord(recordID: String) async {
+        do {
+            try await publicDatabase.deleteRecord(withID: CKRecord.ID(recordName: recordID))
+        } catch(let error) {
+            print("Error while executing deleteRecord method: \(error.localizedDescription)")
+        }
     }
     
 }

@@ -11,5 +11,5 @@ public protocol CloudKitProtocol {
     func createRecord(teacher: Teacher) async
     func readRecord() async -> [Teacher]
     func updateRecord() async
-    func deleteRecord() async
+    func deleteRecord(recordID: String) async
 }

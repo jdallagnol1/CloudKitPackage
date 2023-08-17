@@ -32,10 +32,8 @@ public struct CloudKitImplementation: CloudKitProtocol {
             
             for record in records {
                 let recordResultTuple = try record.1.get()
-                let decodedRecord = try CloudKitRecordDecoder().decode(Teacher.self, from: recordResultTuple)
-                
-//                print(decodedRecord.cloudKitIdentifier)
-                print(record.0.recordName)
+                var decodedRecord = try CloudKitRecordDecoder().decode(Teacher.self, from: recordResultTuple)
+                decodedRecord.recordName = record.0.recordName
                 
                 teachersList.append(decodedRecord)
             }
